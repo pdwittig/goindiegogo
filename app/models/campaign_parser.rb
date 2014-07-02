@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class CampaignParser
-  def initialize campaign
+  def initialize(campaign)
     @campaign = campaign
     @parse_tasks = []
     load_tasks
@@ -19,7 +19,7 @@ class CampaignParser
   end
 
   def parse_campaign_data
-    @parsing_tasks.each { |task| task.parse }
+    @parsing_tasks.each { |task| task.parse(@campaign) }
   end
 
   def load_tasks
