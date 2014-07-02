@@ -5,7 +5,7 @@ Ever wandered what makes a successful campaign?  Want to make your campaign succ
 
 goIndiegogo analyzes your campaign and tells you how it stacks up against other successful campaigns on a few key metrics.
 
-[Check it out here](goindiegogo.herokuapp.com)
+[Check it out here](http://goindiegogo.herokuapp.com)
 
 ######Key Metrics (possible)
 - What kind of social impact does the campaign currently have?
