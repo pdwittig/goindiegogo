@@ -14,15 +14,15 @@ class CampaignParser
   end
 
   private
-  def read_campaign_data
+  def read_campaign_html
     @campaign.html = Nokogiri::HTML(open(@campaign.url))
   end
 
-  def parse_campaign_data
-    @parsing_tasks.each { |task| task.parse(@campaign) }
+  def parse_campaign_metrics
+    @parse_tasks.each { |task| task.parse(@campaign) }
   end
 
   def load_tasks
-    @parsing_tasks << SocialImpactParser.new
+    @parse_tasks << PerkCountParser.new
   end
 end
