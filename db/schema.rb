@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702015916) do
+ActiveRecord::Schema.define(version: 20140703233142) do
 
   create_table "campaigns", force: true do |t|
     t.string   "url"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140702015916) do
   end
 
   create_table "metrics", force: true do |t|
-    t.string   "type"
+    t.string   "metric_type"
     t.integer  "value"
     t.integer  "campaign_id"
     t.datetime "created_at"
