@@ -5,7 +5,15 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    render json: { status: "ok" }
+    @campaign = Campaign.find_or_create_by(url: params[:campaign][:url])
+
+    if @campaign.save
+      @campaign_parser = CampaignParser.new(@campaign)
+      @campaign_parser.parse
+      render json: {status: "ok"}
+    else
+      render json: {status: "fail"}
+    end
   end
 
 end

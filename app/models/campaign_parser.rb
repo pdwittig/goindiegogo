@@ -8,17 +8,17 @@ class CampaignParser
     load_tasks
   end
 
-  def process_campaign
-    read_campaign_html
-    parse_campaign_metrics
+  def parse
+    read_html
+    parse_metrics
   end
 
   private
-  def read_campaign_html
+  def read_html
     @campaign.html = Nokogiri::HTML(open(@campaign.url))
   end
 
-  def parse_campaign_metrics
+  def parse_metrics
     @parse_tasks.each { |task| task.parse(@campaign) }
   end
 

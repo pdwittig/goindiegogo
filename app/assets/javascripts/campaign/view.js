@@ -8,7 +8,7 @@ Campaign.View.prototype = {
     $(document).on('ajax:success', this.handleCampaignResponse)
   },
 
-  handleCampaignResponse: function(data){
+  handleCampaignResponse: function(e, data){
     $('.container').append('<h3>Test</h3>')
     console.log(data)
   }
