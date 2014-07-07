@@ -10,10 +10,15 @@ class CampaignsController < ApplicationController
     if @campaign.save
       @campaign_parser = CampaignParser.new(@campaign)
       @campaign_parser.parse
-      render json: {status: "ok"}
+      redirect_to campaign_path(@campaign.id)
     else
       render json: {status: "fail"}
     end
+  end
+
+  def show
+    @campaign = Campaign.find(params[:id])
+    render json: {status: "ok"}
   end
 
 end
