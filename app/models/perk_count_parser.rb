@@ -2,16 +2,17 @@ require 'nokogiri'
 class PerkCountParser
 
   def initialize
-    @perk_selector = '.i-perks > a'
+    @perk_selector = '.perk'
   end
 
   def parse(campaign)
     perk_count = get_perk_count(campaign.html)
-    campaign.metrics.create metric_type: "perk_count", value: perk_count
+    metric = campaign.metrics.find_or_create_by(metric_type: "perk_count")
+    metric.update_attributes(value: perk_count)
   end
 
   private
   def get_perk_count(campaign_html)
-    p campaign_html.css(@perk_selector).length
+    campaign_html.css(@perk_selector).length
   end
 end

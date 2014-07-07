@@ -1,1 +1,6 @@
-<h1>Welcome to go Indiegogo</h1>
+<div class="container">
+  <%= form_for(@campaign, remote: true) do |f| %>
+    <%= f.text_field :url %>
+    <%= f.submit "Analyze" %>
+  <% end %>
+</div>
