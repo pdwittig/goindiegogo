@@ -24,5 +24,6 @@ class CampaignParser
 
   def load_tasks
     @parse_tasks << PerkCountParser.new
+    @parse_tasks << FundingPercentParser.new
   end
 end
