@@ -12,7 +12,7 @@ class CampaignsController < ApplicationController
       @campaign_parser.parse
       redirect_to campaign_path(@campaign.id)
     else
-      render json: {status: "fail"}
+      render json: { errors: @campaign.errors.messages }
     end
   end
 
