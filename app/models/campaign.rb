@@ -11,25 +11,20 @@ class Campaign < ActiveRecord::Base
 
   def self.generate_chart_data(metrics)
     campaign = transform_data(self.includes(:metrics).
-      where("metrics.metric_type = ? OR metrics.metric_type = ?", metrics[:metric_x], metrics[:metric_y]).
+      where("metrics.metric_type = ? OR metrics.metric_type = ?",
+      metrics[:metric_x], metrics[:metric_y]).
       references(:metrics))
-    p campaign
-    campaign.to_json
+    campaign
   end
 
   private
   def self.transform_data(data)
-    data.map! do |campaign|
-      self.extract_metrics(campaign)
-    end
-    return data
+    data.map! { |campaign| self.extract_metrics(campaign) }
   end
 
   def self.extract_metrics(campaign)
     metrics = {}
-    campaign.metrics.each do |metric|
-      metrics[metric.metric_type] = metric.value
-    end
+    campaign.metrics.each { |metric| metrics[metric.metric_type] = metric.value }
     return metrics
   end
 end
