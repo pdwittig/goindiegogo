@@ -1,4 +1,4 @@
 Goindiegogo::Application.routes.draw do
   root 'campaigns#new'
-  resources :campaigns, only: [:new, :create, :show] 
+  resources :campaigns, only: [:index, :new, :create, :show]
 end

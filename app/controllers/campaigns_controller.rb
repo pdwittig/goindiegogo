@@ -1,5 +1,9 @@
 class CampaignsController < ApplicationController
 
+  def index
+    Campaign.generate_chart_data(params{:metrics})
+  end
+
   def new
     @campaign = Campaign.new
   end
