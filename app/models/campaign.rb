@@ -8,4 +8,23 @@ class Campaign < ActiveRecord::Base
     @campaign = self.find_by_url(url)
     @campaign ? @campaign : Campaign.new(url: url)
   end
+
+  def self.generate_chart_data(metrics)
+    campaign = transform_data(self.includes(:metrics).
+      where("metrics.metric_type = ? OR metrics.metric_type = ?",
+      metrics[:metric_x], metrics[:metric_y]).
+      references(:metrics))
+    campaign
+  end
+
+  private
+  def self.transform_data(data)
+    data.map! { |campaign| self.extract_metrics(campaign) }
+  end
+
+  def self.extract_metrics(campaign)
+    metrics = {}
+    campaign.metrics.each { |metric| metrics[metric.metric_type] = metric.value }
+    return metrics
+  end
 end
