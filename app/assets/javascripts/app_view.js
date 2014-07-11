@@ -1,9 +1,9 @@
-Campaign.View = function() {
+App.View = function() {
   this.campaign_form_selector = ".campaign_new"
 
 }
 
-Campaign.View.prototype = {
+App.View.prototype = {
   bindEvents: function(){
     $(document).on('ajax:success', this.handleCampaignResponse)
   },
