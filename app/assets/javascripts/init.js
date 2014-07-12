@@ -1,5 +1,5 @@
 window.onload = function(){
-  var view = new Campaign.View()
+  var view = new App.View()
   view.bindEvents();
-  var controller = new Campaign.Controller()
+  var controller = new App.Controller()
 }
