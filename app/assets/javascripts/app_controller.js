@@ -1,6 +1,6 @@
-App.Controller = function() {
+App.Controller = function(chartController) {
   this.campaign_form_selector = ".new_campaign"
-
+  this.chartController = chartController
 }
 
 App.Controller.prototype = {
