@@ -21,6 +21,6 @@ Chart.Controller.prototype = {
   },
 
   renderChart: function(data) {
-   debugger
+   this.view.render(data)
   }
 }
