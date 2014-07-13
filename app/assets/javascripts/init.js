@@ -1,5 +1,5 @@
 window.onload = function(){
-  var controller = new App.Controller()
-  controller.bindEvents();
-
+  var chartController = new Chart.Controller();
+  var appController = new App.Controller(chartController);
+  appController.bindEvents();
 }
