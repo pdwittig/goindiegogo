@@ -1,6 +1,7 @@
-Chart.Controller = function(){
+Chart.Controller = function(view){
   this.defaultMetrics = { metrics: { metric_x: "perk_count",
                                      metric_y: "funding_percent"}};
+  this.view = view 
 }
 
 Chart.Controller.prototype = {
@@ -20,6 +21,6 @@ Chart.Controller.prototype = {
   },
 
   renderChart: function(data) {
-    debugger
+   debugger
   }
 }
