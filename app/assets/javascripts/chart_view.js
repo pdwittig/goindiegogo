@@ -17,12 +17,14 @@ Chart.View.prototype = {
   },
 
   setXScale: function()
-
+    this.xScale = d3.scale.linear()
+        .range([0, d3.max(this.data, function(d){ return d.perk_count })])
+        .domain([0, width]);
   },
 
   setYScale: function(){
     this.yScale = d3.scale.linear()
         .range([this.height, 0])
-        .domain([0, d3.max(this.data, function(d) { return d.perk_count })]);
+        .domain([0, d3.max(this.data, function(d) { return d.funding_percent })]);
   }
 }
