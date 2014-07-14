@@ -18,8 +18,8 @@ Chart.View.prototype = {
 
   setXScale: function()
     this.xScale = d3.scale.linear()
-        .range([0, d3.max(this.data, function(d){ return d.perk_count })])
-        .domain([0, width]);
+        .range([0, width]);
+        .domain([0, d3.max(this.data, function(d){ return d.perk_count })])
   },
 
   setYScale: function(){
