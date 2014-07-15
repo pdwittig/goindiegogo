@@ -7,10 +7,18 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Number of Perks</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Funding Goal ($)</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Number of Team Members</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Number of Comments</a></li>
+          <li role="presentation">
+            <%= link_to "Number of Perks", campaigns_path(metrics: { metric_x: "perk_count", metric_y: "funding_percent" }), remote: true, role: "menuitem", tabindex: "-1"%>
+          </li>
+          <li role="presentation">
+            <%= link_to "Funding Goal ($)", campaigns_path(metrics: { metric_x: "funding_goal", metric_y: "funding_percent" }), remote: true, role: "menuitem", tabindex: "-1"%>
+          </li>
+          <li role="presentation">
+            <%= link_to "Number of Team Members", campaigns_path(metrics: { metric_x: "team_member_count", metric_y: "funding_percent" }), remote: true, role: "menuitem", tabindex: "-1"%>
+          </li>
+          <li role="presentation">
+            <%= link_to "Number of Comments", campaigns_path(metrics: { metric_x: "comment_count", metric_y: "funding_percent" }), remote: true, role: "menuitem", tabindex: "-1"%>
+          </li>
         </ul>
       </div>
     </div>

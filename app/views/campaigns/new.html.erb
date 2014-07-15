@@ -1,5 +1,5 @@
 <div class="container-fluid container">
-  <div class="analyze-form">
+  <div class="row analyze-form">
     <%= form_for(@campaign, remote: true) do |f| %>
     <%= f.text_field :url, placeholder: "Enter Campaign Url" %>
     <%= f.submit "Analyze", class: "button" %>
