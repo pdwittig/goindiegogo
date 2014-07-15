@@ -11,13 +11,14 @@ Chart.View.prototype = {
     this.createXAxis();
     this.createYAxis();
     this.createChart();
+    this.appendLabel();
     this.appendXAxis();
     this.appendYAxis();
     this.populateWithData();  
   },
 
   setSizing: function() {
-    this.margin = {top: 20, right: 30, bottom: 30, left: 100};
+    this.margin = {top: 40, right: 30, bottom: 30, left: 100};
     this.width = 960 - this.margin.left - this.margin.right;
     this.height = 500 - this.margin.top - this.margin.bottom;
   },
@@ -56,6 +57,16 @@ Chart.View.prototype = {
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
   },
 
+  appendLabel: function() {
+    this.chart.append("text")
+        .attr("x", this.width / 2)
+        .attr("y", 0 - this.margin.top / 2)
+        .attr("text-anchor", "middle")
+        .style("font-size", "20px")
+        .style("fill", "#A5A7AA")
+        .text("Perk Count v. Funding Percent")
+  },
+
   appendXAxis: function() {
     this.chart.append("g")
         .attr("class", "x axis")
@@ -85,6 +96,10 @@ Chart.View.prototype = {
         .data(this.data)
       .enter().append('circle')
         .attr("class", "point")
+        .attr("cx", this.width / 2)
+        .attr("cy", this.height / 2)
+        .transition(30)
+        .delay(500)
         .attr("cx", function(d){ return this.xScale(d.perk_count); }.bind(this))
         .attr("cy", function(d){ return this.yScale(d.funding_percent); }.bind(this))
         .attr("r", "4");
