@@ -7,7 +7,9 @@ Chart.View.prototype = {
     this.chartData = data
     this.setSizing();
     this.setXScale();
-    this.setYscale();   
+    this.setYscale();
+    this.createChart();
+    this.populateWithData();  
   },
 
   setSizing: function() {
@@ -18,13 +20,31 @@ Chart.View.prototype = {
 
   setXScale: function()
     this.xScale = d3.scale.linear()
-        .range([0, width]);
-        .domain([0, d3.max(this.data, function(d){ return d.perk_count })])
+        .range([0, width])
+        .domain([0, d3.max(this.data, function(d){ return d.perk_count })]);
   },
 
   setYScale: function(){
     this.yScale = d3.scale.linear()
         .range([this.height, 0])
         .domain([0, d3.max(this.data, function(d) { return d.funding_percent })]);
+  },
+
+  creatChart: function() {
+    this.chart = d3.select('.chart')
+        .attr("width", this.width + this.margin.left + this.margin.right)
+        .attr("height", this.height + this.margin.top + this.margin.bottom)
+      .append('g')
+        .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+  },
+
+  populateWithData: function() {
+    chart.selectAll('.point')
+        .data(data)
+      .enter().append('circle')
+        .attr("class", "point")
+        .attr("x", function(d){ return x(d.perk_count); })
+        .attr("y", function(d){ return y(d.funding_percent); })
+        .attr("r". "2")
   }
 }
