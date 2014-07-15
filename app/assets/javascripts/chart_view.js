@@ -4,7 +4,6 @@ Chart.View = function() {
 
 Chart.View.prototype = {
   render: function(data) {
-    debugger
     this.data = data;
     this.setSizing();
     this.setXScale();
@@ -59,15 +58,26 @@ Chart.View.prototype = {
 
   appendXAxis: function() {
     this.chart.append("g")
-        .attr("class", "x-axis")
+        .attr("class", "x axis")
         .attr("transform", "translate(0," + this.height + ")")
-        .call(this.xAxis);
+        .call(this.xAxis)
+      .append("text")
+        .attr("x", this.width)
+        .attr("dy", "-1em")
+        .style("text-anchor", "end")
+        .text("Perk Count");
   },
 
   appendYAxis: function() {
     this.chart.append("g")
-      .attr("class", "y-axis")
-      .call(this.yAxis);
+        .attr("class", "y axis")
+        .call(this.yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "1em")
+        .style("text-anchor", "end")
+        .text("Funding Percent");
   },
 
   populateWithData: function() {

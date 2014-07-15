@@ -1,7 +1,94 @@
-.container {
-  width: 1000px;
-  height: 600px;
+body {
+  background-color: #FAFAFA;
+}
+
+header {
+  height: 80px;
+  background-color: #fff;
+  color: #34495E;
+  border-bottom: 1px solid #ECF0F1;
+}
+
+header > .content {
+  width: 1200px;
   margin: 0 auto;
-  margin-top: 200px;
-  border: 1px dotted black
+}
+
+.content > span {
+  height: 100%;
+}
+
+.container {
+  background-color: #fff;
+  width: 1000px;
+  height: 675px;
+  margin: 0 auto;
+  margin-top: 125px;
+  border: 1px solid #ECF0F1;
+}
+
+.logo {
+  height: 80px;
+}
+
+.analyze-form {
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid #ECF0F1 ;
+  margin-top: 50px;
+}
+
+#new_campaign {
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 20px
+}
+
+#campaign_url {
+  width: 70%;
+}
+
+input, .button {
+  height: 30px;
+}
+
+input:focus {
+  border-color: #eb1478;
+}
+
+.button {
+  background-color: #eb1478;
+  color: #fff;
+  font-size: 15px;
+  height: 36px;
+  border: 0;
+  width: 25%;
+}
+
+.button:focus {
+  border: none;
+  outline: none;
+
+}
+
+.button:hover {
+  background-color: #fa1681;
+}
+
+.axis {
+  fill: none;
+  stroke: #A5A7AA;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.chart {
+  margin-top: 20px;
+}
+
+.point {
+  fill: #0eb4b6;
 }
