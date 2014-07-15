@@ -96,6 +96,10 @@ Chart.View.prototype = {
         .data(this.data)
       .enter().append('circle')
         .attr("class", "point")
+        .attr("cx", this.width / 2)
+        .attr("cy", this.height / 2)
+        .transition(30)
+        .delay(500)
         .attr("cx", function(d){ return this.xScale(d.perk_count); }.bind(this))
         .attr("cy", function(d){ return this.yScale(d.funding_percent); }.bind(this))
         .attr("r", "4");
