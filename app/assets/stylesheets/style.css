@@ -21,7 +21,7 @@ header > .content {
 .container {
   background-color: #fff;
   width: 1000px;
-  height: 600px;
+  height: 675px;
   margin: 0 auto;
   margin-top: 125px;
   border: 1px solid #ECF0F1;
@@ -31,10 +31,17 @@ header > .content {
   height: 80px;
 }
 
+.analyze-form {
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid #ECF0F1 ;
+  margin-top: 50px;
+}
+
 #new_campaign {
   width: 300px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-bottom: 20px
 }
 
 #campaign_url {
