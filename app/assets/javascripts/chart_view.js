@@ -4,10 +4,10 @@ Chart.View = function() {
 
 Chart.View.prototype = {
   render: function(data) {
-    this.chartData = data
+    this.data = data;
     this.setSizing();
     this.setXScale();
-    this.setYscale();
+    this.setYScale();
     this.createChart();
     this.populateWithData();  
   },
@@ -15,12 +15,12 @@ Chart.View.prototype = {
   setSizing: function() {
     this.margin = {top: 20, right: 30, bottom: 30, left: 40};
     this.width = 960 - this.margin.left - this.margin.right;
-    this.height = 500 - margin.top - margin.bottom;
+    this.height = 500 - this.margin.top - this.margin.bottom;
   },
 
   setXScale: function() {
     this.xScale = d3.scale.linear()
-        .range([0, width])
+        .range([0, this.width])
         .domain([0, d3.max(this.data, function(d){ return d.perk_count })]);
   },
 
@@ -30,7 +30,7 @@ Chart.View.prototype = {
         .domain([0, d3.max(this.data, function(d) { return d.funding_percent })]);
   },
 
-  creatChart: function() {
+  createChart: function() {
     this.chart = d3.select('.chart')
         .attr("width", this.width + this.margin.left + this.margin.right)
         .attr("height", this.height + this.margin.top + this.margin.bottom)
@@ -39,12 +39,12 @@ Chart.View.prototype = {
   },
 
   populateWithData: function() {
-    chart.selectAll('.point')
-        .data(data)
+    this.chart.selectAll('.point')
+        .data(this.data)
       .enter().append('circle')
         .attr("class", "point")
-        .attr("x", function(d){ return x(d.perk_count); })
-        .attr("y", function(d){ return y(d.funding_percent); })
-        .attr("r", "2");
+        .attr("cx", function(d){ return this.xScale(d.perk_count); }.bind(this))
+        .attr("cy", function(d){ return this.yScale(d.funding_percent); }.bind(this))
+        .attr("r", "4");
   }
 }
