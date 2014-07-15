@@ -1,7 +1,65 @@
+body {
+  background-color: #FAFAFA;
+}
+
+header {
+  height: 80px;
+  background-color: #fff;
+  color: #34495E;
+  border-bottom: 1px solid #ECF0F1;
+}
+
+header > .content {
+  width: 1200px;
+  margin: 0 auto;
+}
+
 .container {
+  background-color: #fff;
   width: 1000px;
   height: 600px;
   margin: 0 auto;
-  margin-top: 200px;
-  border: 1px dotted black
+  margin-top: 125px;
+  border: 1px solid #ECF0F1;
+}
+
+#logo {
+  height: 80px;
+}
+
+#new_campaign {
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+#campaign_url {
+  width: 70%;
+}
+
+input, .button {
+  height: 30px;
+}
+
+input:focus {
+  border-color: #eb1478;
+}
+
+.button {
+  background-color: #eb1478;
+  color: #fff;
+  font-size: 15px;
+  height: 36px;
+  border: 0;
+  width: 25%;
+}
+
+.button:focus {
+  border: none;
+  outline: none;
+
+}
+
+.button:hover {
+  background-color: #fa1681;
 }
