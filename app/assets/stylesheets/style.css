@@ -20,8 +20,8 @@ header > .content {
 
 .container {
   background-color: #fff;
-  width: 1000px;
-  height: 675px;
+  max-width: 1000px;
+  height: 700px;
   margin: 0 auto;
   margin-top: 125px;
   border: 1px solid #ECF0F1;
@@ -32,16 +32,16 @@ header > .content {
 }
 
 .analyze-form {
-  width: 90%;
+  /*width: 90%;*/
   margin: 0 auto;
   border-bottom: 1px solid #ECF0F1 ;
   margin-top: 50px;
 }
 
 #new_campaign {
-  width: 300px;
+  max-width: 300px;
   margin: 0 auto;
-  margin-bottom: 20px
+  margin-bottom: 30px
 }
 
 #campaign_url {
@@ -60,11 +60,14 @@ input:focus {
   background-color: #eb1478;
   color: #fff;
   font-size: 15px;
-  height: 36px;
+  /*height: 36px;*/
   border: 0;
   width: 25%;
 }
 
+.btn {
+  border-radius: 0;
+}
 .button:focus {
   border: none;
   outline: none;
@@ -91,4 +94,13 @@ input:focus {
 
 .point {
   fill: #0eb4b6;
+}
+
+.chart-header {
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 18px;
+  color: #A5A7AA;
 }
