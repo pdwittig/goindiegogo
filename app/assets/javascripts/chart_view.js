@@ -14,11 +14,11 @@ Chart.View.prototype = {
 
   setSizing: function() {
     this.margin = {top: 20, right: 30, bottom: 30, left: 40};
-    this.width = 960 - thi.margin.left - this.margin.right;
+    this.width = 960 - this.margin.left - this.margin.right;
     this.height = 500 - margin.top - margin.bottom;
   },
 
-  setXScale: function()
+  setXScale: function() {
     this.xScale = d3.scale.linear()
         .range([0, width])
         .domain([0, d3.max(this.data, function(d){ return d.perk_count })]);
@@ -45,6 +45,6 @@ Chart.View.prototype = {
         .attr("class", "point")
         .attr("x", function(d){ return x(d.perk_count); })
         .attr("y", function(d){ return y(d.funding_percent); })
-        .attr("r". "2")
+        .attr("r", "2");
   }
 }
