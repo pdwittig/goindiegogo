@@ -14,6 +14,10 @@ header > .content {
   margin: 0 auto;
 }
 
+.content > span {
+  height: 100%;
+}
+
 .container {
   background-color: #fff;
   width: 1000px;
@@ -23,7 +27,7 @@ header > .content {
   border: 1px solid #ECF0F1;
 }
 
-#logo {
+.logo {
   height: 80px;
 }
 
@@ -62,4 +66,22 @@ input:focus {
 
 .button:hover {
   background-color: #fa1681;
+}
+
+.axis {
+  fill: none;
+  stroke: #A5A7AA;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.chart {
+  margin-top: 20px;
+}
+
+.point {
+  fill: #0eb4b6;
 }

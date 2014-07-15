@@ -4,7 +4,6 @@ Chart.View = function() {
 
 Chart.View.prototype = {
   render: function(data) {
-    debugger
     this.data = data;
     this.setSizing();
     this.setXScale();
@@ -59,14 +58,14 @@ Chart.View.prototype = {
 
   appendXAxis: function() {
     this.chart.append("g")
-        .attr("class", "x-axis")
+        .attr("class", "x axis")
         .attr("transform", "translate(0," + this.height + ")")
         .call(this.xAxis);
   },
 
   appendYAxis: function() {
     this.chart.append("g")
-      .attr("class", "y-axis")
+      .attr("class", "y axis")
       .call(this.yAxis);
   },
 
