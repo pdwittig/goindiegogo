@@ -4,16 +4,21 @@ Chart.View = function() {
 
 Chart.View.prototype = {
   render: function(data) {
+    debugger
     this.data = data;
     this.setSizing();
     this.setXScale();
     this.setYScale();
+    this.createXAxis();
+    this.createYAxis();
     this.createChart();
+    this.appendXAxis();
+    this.appendYAxis();
     this.populateWithData();  
   },
 
   setSizing: function() {
-    this.margin = {top: 20, right: 30, bottom: 30, left: 40};
+    this.margin = {top: 20, right: 30, bottom: 30, left: 100};
     this.width = 960 - this.margin.left - this.margin.right;
     this.height = 500 - this.margin.top - this.margin.bottom;
   },
@@ -25,9 +30,23 @@ Chart.View.prototype = {
   },
 
   setYScale: function(){
-    this.yScale = d3.scale.linear()
+    this.yScale = d3.scale.sqrt()
         .range([this.height, 0])
         .domain([0, d3.max(this.data, function(d) { return d.funding_percent })]);
+  },
+
+  createXAxis: function() {
+    this.xAxis = d3.svg.axis()
+        .scale(this.xScale)
+        .orient("bottom")
+        .ticks(10);
+  },
+
+  createYAxis: function() {
+    this.yAxis = d3.svg.axis()
+        .scale(this.yScale)
+        .orient("left")
+        .ticks(10);
   },
 
   createChart: function() {
@@ -36,6 +55,19 @@ Chart.View.prototype = {
         .attr("height", this.height + this.margin.top + this.margin.bottom)
       .append('g')
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+  },
+
+  appendXAxis: function() {
+    this.chart.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", "translate(0," + this.height + ")")
+        .call(this.xAxis);
+  },
+
+  appendYAxis: function() {
+    this.chart.append("g")
+      .attr("class", "y-axis")
+      .call(this.yAxis);
   },
 
   populateWithData: function() {
