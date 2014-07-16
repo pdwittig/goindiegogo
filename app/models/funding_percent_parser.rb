@@ -5,7 +5,7 @@ class FundingPercentParser
   end
 
   def parse(campaign)
-    funding_percent = get_funding_percent(campaign.html)
+    funding_percent = get_funding_percent(campaign.html_base)
     metric = campaign.metrics.find_or_create_by(metric_type: "funding_percent")
     metric.update_attributes(value: funding_percent)
   end

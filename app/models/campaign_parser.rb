@@ -4,6 +4,8 @@ require 'open-uri'
 class CampaignParser
   def initialize(campaign)
     @campaign = campaign
+    @show_url_extension = '/show_tab/home'
+    @base_url_patten = /.+www.indiegogo.com\/projects\/[^\/]+/
     @parse_tasks = []
     load_tasks
   end
@@ -15,7 +17,12 @@ class CampaignParser
 
   private
   def read_html
-    @campaign.html = Nokogiri::HTML(open(@campaign.url))
+    @campaign.html_base = Nokogiri::HTML(open(extract_base_url(@campaign.url)))
+    @campaign.html_home = Nokogiri::HTML(open(extract_base_url(@campaign.url) + @show_url_extension))
+  end
+
+  def extract_base_url(url)
+    @base_url_patten.match(url).to_s
   end
 
   def parse_metrics
@@ -25,5 +32,6 @@ class CampaignParser
   def load_tasks
     @parse_tasks << PerkCountParser.new
     @parse_tasks << FundingPercentParser.new
+    @parse_tasks << TeamMemberCountParser.new
   end
 end

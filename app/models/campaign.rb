@@ -1,8 +1,8 @@
 class Campaign < ActiveRecord::Base
   has_many :metrics
   validates :url, format: { with: /.+www.indiegogo.com\/projects\/.+/,
-                            message: "Please enter a valid Indiegogo campaign url" }
-  attr_accessor :html
+                            message: "Please enter a valid Indiegogo campaign url" }                     
+  attr_accessor :html_base, :html_home
 
   def self.find_exisiting_or_create_new(url)
     @campaign = self.find_by_url(url)
@@ -10,11 +10,10 @@ class Campaign < ActiveRecord::Base
   end
 
   def self.generate_chart_data(metrics)
-    campaign = transform_data(self.includes(:metrics).
+    transform_data(self.includes(:metrics).
       where("metrics.metric_type = ? OR metrics.metric_type = ?",
       metrics[:metric_x], metrics[:metric_y]).
       references(:metrics))
-    campaign
   end
 
   private
