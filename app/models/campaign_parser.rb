@@ -30,9 +30,10 @@ class CampaignParser
   end
 
   def load_tasks
-    @parse_tasks << PerkCountParser.new
-    @parse_tasks << FundingPercentParser.new
-    @parse_tasks << TeamMemberCountParser.new
+    @parse_tasks << FundingPercentRaisedParser.new
+    @parse_tasks << FundingCurrencyRaisedParser.new
     @parse_tasks << FundingGoalParser.new
+    @parse_tasks << TeamMemberCountParser.new
+    @parse_tasks << PerkCountParser.new
   end
 end
