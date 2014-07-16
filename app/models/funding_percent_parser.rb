@@ -1,7 +1,7 @@
 require 'nokogiri'
 class FundingPercentParser
   def initialize
-    @perk_selector = '.i-percent'
+    @percent_selector = '.i-percent'
   end
 
   def parse(campaign)
@@ -12,6 +12,6 @@ class FundingPercentParser
 
   private
   def get_funding_percent(campaign_html)
-    campaign_html.css(@perk_selector).text.gsub(/[^\d]/,'').to_i
+    campaign_html.css(@percent_selector).text.gsub(/[^\d]/,'').to_i
   end
 end
