@@ -1,5 +1,5 @@
 require 'nokogiri'
-class FundingPercentParser
+class FundingPercentRaisedParser
   def initialize
     @percent_selector = '.i-percent'
   end

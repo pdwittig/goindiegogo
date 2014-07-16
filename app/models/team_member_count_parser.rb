@@ -1,7 +1,7 @@
 require 'nokogiri'
 class TeamMemberCountParser
   def initialize
-    @perk_selector = '.i-team-members > li'
+    @team_selector = '.i-team-members > li'
   end
 
   def parse(campaign)
@@ -12,6 +12,6 @@ class TeamMemberCountParser
 
   private
   def get_team_member_count(campaign_html)
-    campaign_html.css(@perk_selector).length
+    campaign_html.css(@team_selector).length
   end
 end
