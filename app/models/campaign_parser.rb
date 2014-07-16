@@ -33,5 +33,6 @@ class CampaignParser
     @parse_tasks << PerkCountParser.new
     @parse_tasks << FundingPercentParser.new
     @parse_tasks << TeamMemberCountParser.new
+    @parse_tasks << FundingGoalParser.new
   end
 end

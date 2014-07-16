@@ -1,6 +1,6 @@
 require 'nokogiri'
 class FundingPercentParser
- def initialize
+  def initialize
     @perk_selector = '.i-percent'
   end
 
