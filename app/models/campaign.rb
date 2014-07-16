@@ -1,5 +1,5 @@
 class Campaign < ActiveRecord::Base
-  has_many :metrics
+  has_many :metrics, dependent: :destroy
   validates :url, format: { with: /.+www.indiegogo.com\/projects\/.+/,
                             message: "Please enter a valid Indiegogo campaign url" }                     
   attr_accessor :html_base, :html_home
