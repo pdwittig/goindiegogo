@@ -1,9 +1,12 @@
-<div class="container">
-<div class="analyze-form">
-  <%= form_for(@campaign, remote: true) do |f| %>
+<div class="container-fluid container">
+  <div class="row analyze-form">
+    <%= form_for(@campaign, remote: true) do |f| %>
     <%= f.text_field :url, placeholder: "Enter Campaign Url" %>
     <%= f.submit "Analyze", class: "button" %>
-  <% end %>
-</div>
-  <svg class="chart"></svg>
+    <% end %>
+  </div>
+  <%= render "chart_header" %>
+  <div class="row">
+    <svg class="chart"></svg>
+  </div>
 </div>

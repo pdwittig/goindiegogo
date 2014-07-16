@@ -5,4 +5,6 @@ window.onload = function(){
   var chartView = new Chart.View();
   var chartController = new Chart.Controller(chartView);
   appController.registerChartController(chartController)
+
+  $('.ui.dropdown').dropdown()
 }

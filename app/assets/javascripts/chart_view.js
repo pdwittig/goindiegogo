@@ -11,14 +11,14 @@ Chart.View.prototype = {
     this.createXAxis();
     this.createYAxis();
     this.createChart();
-    this.appendLabel();
+    // this.appendLabel();
     this.appendXAxis();
     this.appendYAxis();
     this.populateWithData();  
   },
 
   setSizing: function() {
-    this.margin = {top: 40, right: 30, bottom: 30, left: 100};
+    this.margin = {top: 10, right: 30, bottom: 30, left: 100};
     this.width = 960 - this.margin.left - this.margin.right;
     this.height = 500 - this.margin.top - this.margin.bottom;
   },

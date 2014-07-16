@@ -6,7 +6,7 @@ class PerkCountParser
   end
 
   def parse(campaign)
-    perk_count = get_perk_count(campaign.html)
+    perk_count = get_perk_count(campaign.html_base)
     metric = campaign.metrics.find_or_create_by(metric_type: "perk_count")
     metric.update_attributes(value: perk_count)
   end
