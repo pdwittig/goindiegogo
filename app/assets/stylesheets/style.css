@@ -2,6 +2,10 @@ body {
   background-color: #FAFAFA;
 }
 
+h1, h2, h3, h4, p, a {
+  color: #A5A7AA;
+}
+
 header {
   height: 80px;
   background-color: #fff;
@@ -21,9 +25,18 @@ header > .content {
 .container {
   background-color: #fff;
   max-width: 1000px;
-  height: 700px;
+  height: 650px;
   margin: 0 auto;
-  margin-top: 125px;
+  margin-top: 25px;
+  border: 1px solid #ECF0F1;
+}
+
+.analyze-container {
+  background-color: #fff;
+  max-width: 1000px;
+  height: 130px;
+  margin: 0 auto;
+  margin-top: 50px;
   border: 1px solid #ECF0F1;
 }
 
@@ -34,14 +47,14 @@ header > .content {
 .analyze-form {
   /*width: 90%;*/
   margin: 0 auto;
-  border-bottom: 1px solid #ECF0F1 ;
+  /*border-bottom: 1px solid #ECF0F1 ;*/
   margin-top: 50px;
 }
 
 #new_campaign {
   max-width: 300px;
   margin: 0 auto;
-  margin-bottom: 30px
+  /*margin-bottom: 30px*/
 }
 
 #campaign_url {
@@ -97,10 +110,23 @@ input:focus {
 }
 
 .chart-header {
+  width: 90%;
+  margin: 0 auto;
   margin-top: 20px;
+  border-bottom: 1px solid #ECF0F1 ;
+
 }
 
 .title {
+  margin-left: 2px;
   font-size: 18px;
   color: #A5A7AA;
+}
+
+.chart-options {
+  margin-top: 20px;
+}
+
+.filter .btn {
+  width: 100%;
 }
