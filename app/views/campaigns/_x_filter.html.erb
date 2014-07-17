@@ -1,1 +1,19 @@
-_x_filter.html.erb
+<div class="col-sm-2">
+  <div class="dropdown filter">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+      Perk Count
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation">
+        <%= link_to "Number of Perks", campaigns_path(metrics: { metric_x: "perk_count", metric_y: "funding_percent" }), remote: true, role: "menuitem", tabindex: "-1"%>
+      </li>
+      <li role="presentation">
+        <%= link_to "Funding Goal ($)", campaigns_path(metrics: { metric_x: "funding_goal", metric_y: "funding_percent" }), remote: true, role: "menuitem", tabindex: "-1"%>
+      </li>
+      <li role="presentation">
+        <%= link_to "Number of Team Members", campaigns_path(metrics: { metric_x: "team_member_count", metric_y: "funding_percent" }), remote: true, role: "menuitem", tabindex: "-1"%>
+      </li>
+    </ul>
+  </div>
+</div>
