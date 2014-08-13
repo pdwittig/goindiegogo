@@ -134,3 +134,7 @@ input:focus {
   font-size: 1.1em;
   color: #E74C3C;
 }
+
+.current-campaign {
+  fill: #eb1478;
+}

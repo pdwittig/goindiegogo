@@ -3,9 +3,10 @@ Chart.View = function() {
 }
 
 Chart.View.prototype = {
-  render: function(data, metrics) {
+  render: function(data, metrics, campaignID) {
     // debugger
     this.data = data;
+    this.campaignID = campaignID;
     this.setSizing();
     this.setXScale();
     this.setYScale();
@@ -15,7 +16,8 @@ Chart.View.prototype = {
     // this.appendLabel();
     this.appendXAxis(metrics.metric_x);
     this.appendYAxis(metrics.metric_y);
-    this.populateWithData();  
+    this.populateWithData();
+    console.log("fuck")  
   },
 
   clearChart: function() {
@@ -107,6 +109,8 @@ Chart.View.prototype = {
         .delay(500)
         .attr("cx", function(d){ return this.xScale(d.metric_x); }.bind(this))
         .attr("cy", function(d){ return this.yScale(d.metric_y); }.bind(this))
-        .attr("r", "4");
+        .attr("r", "4")
+      .filter(function(d) { return d.campaign_id === this.campaignID; }.bind(this))
+        .attr("class", "current-campaign");
   }
 }
