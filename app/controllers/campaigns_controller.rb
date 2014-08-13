@@ -1,8 +1,9 @@
 class CampaignsController < ApplicationController
 
   def index
+    p params
     # p params[met]
-    render json: Campaign.generate_chart_data(params[:metrics])
+    render json: Campaign.generate_chart_data(params[:metric_values])
   end
 
   def new
