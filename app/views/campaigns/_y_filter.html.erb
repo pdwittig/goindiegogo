@@ -1,15 +1,15 @@
-<div class="col-sm-2">  
+<div class="col-sm-3">  
   <div class="dropdown filter">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-      Perk Count
+    <button class="btn btn-default dropdown-toggle" type="button" id="metric-y-dropdown" data-toggle="dropdown">
+      <span class="dropdown-value">Percent of Goal Raised</span>
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
       <li role="presentation">
-        <%= link_to "Percent of Goal Raised", campaigns_path(metrics: { metric_x: "perk_count", metric_y: "funding_percent" }), remote: true, role: "menuitem", tabindex: "-1"%>
+         <a href="#" class="y-metric-toggle" data-metric-value="funding_percent" data-metric-label="Percent of Goal Raised">Percent of Goal Raised</a>
       </li>
       <li role="presentation">
-        <%= link_to "Total Fund Raised", campaigns_path(metrics: { metric_x: "funding_goal", metric_y: "funding_percent" }), remote: true, role: "menuitem", tabindex: "-1"%>
+        <a href="#" class="y-metric-toggle" data-metric-value="funding_total" data-metric-label="Total Funds Raised">Total Funds Raised</a>
       </li>
     </ul>
   </div>

@@ -30,13 +30,11 @@ goIndiegogo analyzes your campaign and tells you how it stacks up against other 
 ![Schema](http://i.imgur.com/zA56Yr3.png)
 
 ######Todo
-- Add Bootsrap
-- Add Metric type selector to chart options
+- Implement metric selectors
+- Hightlight current campaign in chart
+- Fix repsonsiveness on chart
 - Finish Logo
 - Add about popup
-- Add 3 more metric strategies
-- Fix re-rendering
-- Add rake task to re-process all exisisting campaigns
 
 
 

@@ -1,21 +1,26 @@
 Chart.View = function() {
-
+  this.chartSelector = '.chart'
 }
 
 Chart.View.prototype = {
-  render: function(data) {
+  render: function(data, metrics) {
+    // debugger
     this.data = data;
     this.setSizing();
     this.setXScale();
     this.setYScale();
-    this.createXAxis();
+    this.createXAxis(data,metrics);
     this.createYAxis();
     this.createChart();
     // this.appendLabel();
-    this.appendXAxis();
-    this.appendYAxis();
+    this.appendXAxis(metrics.metric_x);
+    this.appendYAxis(metrics.metric_y);
     this.populateWithData();  
   },
+
+  clearChart: function() {
+    $(this.chartSelector).empty();
+  },  
 
   setSizing: function() {
     this.margin = {top: 10, right: 30, bottom: 30, left: 100};
@@ -23,16 +28,16 @@ Chart.View.prototype = {
     this.height = 500 - this.margin.top - this.margin.bottom;
   },
 
-  setXScale: function() {
+  setXScale: function(data,metrics) {
     this.xScale = d3.scale.linear()
         .range([0, this.width])
-        .domain([0, d3.max(this.data, function(d){ return d.perk_count })]);
+        .domain([0, d3.max(this.data, function(d){ return d.metric_x })]);
   },
 
   setYScale: function(){
     this.yScale = d3.scale.sqrt()
         .range([this.height, 0])
-        .domain([0, d3.max(this.data, function(d) { return d.funding_percent })]);
+        .domain([0, d3.max(this.data, function(d) { return d.metric_y })]);
   },
 
   createXAxis: function() {
@@ -67,7 +72,7 @@ Chart.View.prototype = {
         .text("Perk Count v. Funding Percent")
   },
 
-  appendXAxis: function() {
+  appendXAxis: function(xLabel) {
     this.chart.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + this.height + ")")
@@ -76,10 +81,10 @@ Chart.View.prototype = {
         .attr("x", this.width)
         .attr("dy", "-1em")
         .style("text-anchor", "end")
-        .text("Perk Count");
+        .text(xLabel);
   },
 
-  appendYAxis: function() {
+  appendYAxis: function(yLabel) {
     this.chart.append("g")
         .attr("class", "y axis")
         .call(this.yAxis)
@@ -88,7 +93,7 @@ Chart.View.prototype = {
         .attr("y", 6)
         .attr("dy", "1em")
         .style("text-anchor", "end")
-        .text("Funding Percent");
+        .text(yLabel);
   },
 
   populateWithData: function() {
@@ -100,8 +105,8 @@ Chart.View.prototype = {
         .attr("cy", this.height / 2)
         .transition(30)
         .delay(500)
-        .attr("cx", function(d){ return this.xScale(d.perk_count); }.bind(this))
-        .attr("cy", function(d){ return this.yScale(d.funding_percent); }.bind(this))
+        .attr("cx", function(d){ return this.xScale(d.metric_x); }.bind(this))
+        .attr("cy", function(d){ return this.yScale(d.metric_y); }.bind(this))
         .attr("r", "4");
   }
 }

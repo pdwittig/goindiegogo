@@ -13,17 +13,24 @@ class Campaign < ActiveRecord::Base
     transform_data(self.includes(:metrics).
       where("metrics.metric_type = ? OR metrics.metric_type = ?",
       metrics[:metric_x], metrics[:metric_y]).
-      references(:metrics))
+      references(:metrics), 
+      metrics)
   end
 
   private
-  def self.transform_data(data)
-    data.map! { |campaign| self.extract_metrics(campaign) }
+  def self.transform_data(data, metrics)
+    data.map! { |campaign| self.extract_metrics(campaign, metrics) }
   end
 
-  def self.extract_metrics(campaign)
-    metrics = {}
-    campaign.metrics.each { |metric| metrics[metric.metric_type] = metric.value }
-    return metrics
+  def self.extract_metrics(campaign, metrics)
+    metric_data = {}
+    campaign.metrics.each do |metric| 
+      if metric.metric_type == metrics[:metric_x]
+        metric_data[:metric_x] = metric.value
+      elsif metric.metric_type == metrics[:metric_y]
+        metric_data[:metric_y] = metric.value
+      end
+    end
+    return metric_data
   end
 end
