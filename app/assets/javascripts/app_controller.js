@@ -6,10 +6,17 @@ App.Controller = function() {
 App.Controller.prototype = {
   bindEvents: function(){
     $(document).on('ajax:success', this.campaign_form_selector, this.handleCampaignResponse.bind(this));
+    $(document).on('ajax:error', this.campaign_form_selector, this.handleErrors.bind(this));
   },
 
   handleCampaignResponse: function(e, data){
-    this.chartController.load();  
+    $('.error-msg').text('') 
+    this.chartController.load(data.campaign_id);  
+  },
+
+  handleErrors: function(e, data) {
+    var error = JSON.parse(data.responseText).errors;
+    $('.error-msg').text(error);
   },
 
   registerChartController: function(controller) {

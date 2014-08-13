@@ -3,7 +3,8 @@ Chart.Controller = function(view){
                                     metric_y: "funding_percent"},
                    metric_labels: { metric_x: "Perk Count",
                                     metric_y: "Percent of Goal Raised"}};
-  this.view = view 
+  this.view = view
+  this.campaignID = null 
 }
 
 Chart.Controller.prototype = {
@@ -13,8 +14,8 @@ Chart.Controller.prototype = {
     $('.chart-options').on('click', '.y-metric-toggle', this.handleYMetricToggle.bind(this))
   },
 
-  load: function() {
-    console.log("Chart.Controller.Load()");
+  load: function(campaignID) {
+    if (campaignID) { this.campaignID = campaignID };
     this.clearChart();
     this.fetchMetricData();
   },
@@ -30,7 +31,7 @@ Chart.Controller.prototype = {
   },
 
   renderChart: function(data) {
-   this.view.render(data, this.metrics.metric_labels)
+    this.view.render(data, this.metrics.metric_labels, this.campaignID)
   },
 
   clearChart: function() {

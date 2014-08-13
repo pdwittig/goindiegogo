@@ -2,10 +2,14 @@
 <div class="analyze-container">
   
   <div class="row analyze-form">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
     <%= form_for(@campaign, remote: true) do |f| %>
     <%= f.text_field :url, placeholder: "Enter Campaign Url" %>
     <%= f.submit "Analyze", class: "button" %>
     <% end %>
+    </div>
+    <div class="error-msg col-md-4"></div>
   </div>
 </div>
   <div class="container">  

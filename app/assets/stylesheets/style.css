@@ -114,7 +114,6 @@ input:focus {
   margin: 0 auto;
   margin-top: 20px;
   border-bottom: 1px solid #ECF0F1 ;
-
 }
 
 .title {
@@ -129,4 +128,13 @@ input:focus {
 
 .filter .btn {
   width: 100%;
+}
+
+.error-msg {
+  font-size: 1.1em;
+  color: #E74C3C;
+}
+
+.current-campaign {
+  fill: #eb1478;
 }
