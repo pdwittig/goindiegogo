@@ -30,11 +30,9 @@ goIndiegogo analyzes your campaign and tells you how it stacks up against other 
 ![Schema](http://i.imgur.com/zA56Yr3.png)
 
 ######Todo
-- Implement metric selectors
 - Hightlight current campaign in chart
 - Fix repsonsiveness on chart
 - Finish Logo
-- Add about popup
 
 
 

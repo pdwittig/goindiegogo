@@ -30,7 +30,7 @@ Chart.Controller.prototype = {
   },
 
   renderChart: function(data) {
-   this.view.render(data, this.metrics.metric_labels)
+    this.view.render(data, this.metrics.metric_labels)
   },
 
   clearChart: function() {

@@ -18,13 +18,13 @@ class CampaignsController < ApplicationController
       @campaign_parser.parse
       redirect_to campaign_path(@campaign.id)
     else
-      render json: { errors: @campaign.errors.messages }
+      render status: 400, json:  { errors: @campaign.errors.messages[:url] }
     end
   end
 
   def show
     @campaign = Campaign.find(params[:id])
-    render json: {status: "ok"}
+    render json: { campaign_id: @campaign.id }
   end
 
 end
