@@ -1,26 +1,61 @@
 Chart.Controller = function(view){
-  this.defaultMetrics = { metrics: { metric_x: "perk_count",
-                                     metric_y: "funding_percent"}};
+  this.metrics = { metric_values: { metric_x: "perk_count",
+                                    metric_y: "funding_percent"},
+                   metric_labels: { metric_x: "Perk Count",
+                                    metric_y: "Percent of Goal Raised"}};
   this.view = view 
 }
 
 Chart.Controller.prototype = {
-  load: function() {
-    console.log("Chart.Controller.Load()");
-    this.fetchMetricData(this.defaultMetrics);
+
+  bindMetricToggles: function() {
+    $('.chart-options').on('click', '.x-metric-toggle', this.handleXMetricToggle.bind(this))
+    $('.chart-options').on('click', '.y-metric-toggle', this.handleYMetricToggle.bind(this))
   },
 
-  fetchMetricData: function(metrics) {
+  load: function() {
+    console.log("Chart.Controller.Load()");
+    this.clearChart();
+    this.fetchMetricData();
+  },
+
+  fetchMetricData: function() {
     var options = {
       type: 'get',
       url: '/campaigns',
-      data: metrics
-    }
-    var request = $.ajax(options)
-    request.done(this.renderChart.bind(this))
+      data: this.metrics
+    };
+    var request = $.ajax(options);
+    request.done(this.renderChart.bind(this));
   },
 
   renderChart: function(data) {
-   this.view.render(data)
+   this.view.render(data, this.metrics.metric_labels)
+  },
+
+  clearChart: function() {
+    this.view.clearChart();
+  },
+
+  handleXMetricToggle: function(event) {
+    event.preventDefault();
+    this.metrics.metric_values.metric_x = event.target.dataset.metricValue;
+    this.metrics.metric_labels.metric_x = event.target.dataset.metricLabel;
+    this.updateToggleValue('#metric-x-dropdown > .dropdown-value', this.metrics.metric_labels.metric_x);
+    this.load();
+  },
+
+  handleYMetricToggle: function(event) {
+    event.preventDefault();
+    this.metrics.metric_values.metric_y = event.target.dataset.metricValue;
+    this.metrics.metric_labels.metric_y = event.target.dataset.metricLabel;
+    this.updateToggleValue('#metric-y-dropdown > .dropdown-value', this.metrics.metric_labels.metric_y);
+    this.load();
+  },
+
+  updateToggleValue: function(selector, label) {
+    $(selector).text(label);
   }
+
+
 }
