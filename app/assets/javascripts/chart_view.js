@@ -111,6 +111,7 @@ Chart.View.prototype = {
         .attr("cy", function(d){ return this.yScale(d.metric_y); }.bind(this))
         .attr("r", "4")
       .filter(function(d) { return d.campaign_id === this.campaignID; }.bind(this))
-        .attr("class", "current-campaign");
+        .attr("class", "current-campaign")
+        .attr("r", "6");
   }
 }

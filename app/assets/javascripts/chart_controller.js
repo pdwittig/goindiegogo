@@ -15,7 +15,7 @@ Chart.Controller.prototype = {
   },
 
   load: function(campaignID) {
-    this.campaignID = campaignID
+    if (campaignID) { this.campaignID = campaignID };
     this.clearChart();
     this.fetchMetricData();
   },
