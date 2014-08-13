@@ -11,7 +11,7 @@ App.Controller.prototype = {
 
   handleCampaignResponse: function(e, data){
     $('.error-msg').text('') 
-    this.chartController.load();  
+    this.chartController.load(data.campaign_id);  
   },
 
   handleErrors: function(e, data) {
