@@ -31,6 +31,7 @@ class Campaign < ActiveRecord::Base
         metric_data[:metric_y] = metric.value
       end
     end
+    metric_data[:campaign_id] = campaign.id
     return metric_data
   end
 end
