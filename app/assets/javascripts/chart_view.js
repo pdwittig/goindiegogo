@@ -4,7 +4,6 @@ Chart.View = function() {
 
 Chart.View.prototype = {
   render: function(data, metrics, campaignID) {
-    // debugger
     this.data = data;
     this.campaignID = campaignID;
     this.setSizing();
