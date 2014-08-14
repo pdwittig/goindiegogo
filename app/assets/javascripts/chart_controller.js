@@ -31,6 +31,7 @@ Chart.Controller.prototype = {
   },
 
   renderChart: function(data) {
+    $('.chart-example').empty()
     this.view.render(data, this.metrics.metric_labels, this.campaignID)
   },
 
