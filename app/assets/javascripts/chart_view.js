@@ -17,7 +17,6 @@ Chart.View.prototype = {
     this.appendXAxis(metrics.metric_x);
     this.appendYAxis(metrics.metric_y);
     this.populateWithData();
-    console.log("fuck")  
   },
 
   clearChart: function() {
@@ -26,7 +25,7 @@ Chart.View.prototype = {
 
   setSizing: function() {
     this.margin = {top: 10, right: 30, bottom: 30, left: 100};
-    this.width = 960 - this.margin.left - this.margin.right;
+    this.width = $('.chart').width() - this.margin.left - this.margin.right;
     this.height = 500 - this.margin.top - this.margin.bottom;
   },
 
